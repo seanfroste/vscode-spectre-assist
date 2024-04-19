@@ -37,6 +37,19 @@
         "language": "in",
         "path": "./snippets/in.code-snippets"
       }
-    ]
+    ],
+    "configuration": {}
+  },
+  "license": "MIT",
+  "main": "./client/out/extension",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -b",
+    "watch": "tsc -b -w",
+    "postinstall": "cd client && npm install && cd ../server && npm install && cd .."
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "typescript": "^5.4.5"
   }
 }

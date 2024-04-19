@@ -1,0 +1,19 @@
+{
+  "name": "vscode-spectra-assist-client",
+  "version": "0.0.1",
+  "description": "vscode extension client for Spectra Assist",
+  "author": "seanfroste",
+  "publisher": "seanfroste",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seanfroste/vscode-spectra-assist"
+  },
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "dependencies": {
+    "@types/vscode": "^1.88.0",
+    "vscode-languageclient": "^9.0.1"
+  }
+}
