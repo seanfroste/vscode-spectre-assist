@@ -1,0 +1,1874 @@
+{
+  "statementAbbrevsRef": {
+    "BIAS": "BIAS",
+    "CONS": "CONSTANT",
+    "CONV": "CONVERGENCE",
+    "DEFINE": "DEFINE",
+    "DEPO": "DEPOSIT",
+    "DOPE": "DOPE",
+    "ELEC": "ELECTRODE",
+    "END": "END",
+    "EXTR": "EXTRACT",
+    "GRID": "GRID",
+    "IF": "IF",
+    "INSERT": "INSERT",
+    "INT": "INTERFACE",
+    "LIGHT": "LIGHT",
+    "MODEL": "MODEL",
+    "NFER": "NFERMI",
+    "PFER": "PFERMI",
+    "REGI": "REGION",
+    "REST": "RESTART",
+    "SAVE": "SAVE",
+    "STRUCT": "STRUCTURE",
+    "SUBS": "SUBSTRATE",
+    "TITLE": "TITLE"
+  },
+  "statements": [
+    {
+      "name": "BIAS",
+      "abbrev": "BIAS",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement defines electrode name, potential step, repeat time, and quasi-Fermi region name which is changed with the potential.",
+      "format": "BIAS ENAME=<char> VSTEP=<real> NSTEP=<real> ERROR=<real>\n\t[ NFNAME=<char> PFNAME=<char> FLOAT=<char> BMODEL=<char> ]",
+      "notices": "",
+      "examples": "BIAS ENAME=DRAIN VSTEP=0.5 NSTEP=10 NFNAME=N2\nBIAS ENAME=PD VSTEP=0.5 NSTEP=5 NFNAME=PD1 FLOAT=N ERROR=1E-12\nBIAS ENAME=FD VSTEP=0.2 NSTEP=7 NFNAME=NFD FLOAT=N ERROR=1E-12 BMOD=L"
+    },
+    {
+      "name": "CONSTANT",
+      "abbrev": "CONS",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement specifies physical constant.",
+      "format": "CONSTANT [ TEMPERATURE=<real> EOX=<real> ESI=<real> ENI=<real> EIN=<real> EME=<real> EAL=<real> EPS=<real> EM1=<real> EM2=<real> EM3=<real> EM4=<real> EM5=<real> EM6=<real> EM7=<real> EM8=<real> EMOB=<real> HMOB=<real> NI=<real> CN=<real> CP=<real> TN0=<real> or <progression> TP0=<real> or <progression> VBG=<real> CBG=<real> CSRH=<real> AN=<real> AP=<real> BN=<real> BP=<real> XREF=<real> ESREF=<real> HSREF=<real> SREFN=<real> SREFP=<real> ALPHAN =<real> ALPHAP=<real> BETAN=<real> BETAP=<real> FACTN=<real> FACTP=<real> CREFN=<real> CREFP=<real> VCN=<real> VCP=<real> VSN=<real> VSP=<real> EMMIN=<real> HMMIN=<real> NSI=<real> or <progression> ASI=<real> or <progression> ASG=<real> or <progression> AGE=<real> or <progression> EGGE= <progression> QE=<real> or <progression> CTRAP=<real> DTRAP=<real> TRAPMOB=<real> TMASS=<real> DRANGE=<real> ET=<real> FNMN=<real> FNMP=<real> FNBN=<real> FNBP=<real> ]",
+      "notices": "If TEMPERATURE is denoted, any parameters denoted before TEMPERATURE are ignored.",
+      "examples": "CONST TEMP=330 EMOB=1200 HMOB=500 EM1=3.9\nCONST ASI=(400,1.1,500,0.8,600,0.7,700,0.8)"
+    },
+    {
+      "name": "CONVERGENCE",
+      "abbrev": "CONV",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement defines the convergence condition.",
+      "format": " CONVERGENCE [ VERROR=<real> FERROR=<real> CARRIER=<real> PHASE1=<real> PHASE2=<real> PHASE3 =<real> TIME=<real> STEP=<real> TRATE=<real> SKIP=<char> PSOR=<real> PCYCLE=<real> NEWTON=<real> FSOR=<real> FCYCLE=<real> ABORT=<real> METHOD=<char> POISSON=<char> RANGECHECK=<char> FPRINT=<char> ]",
+      "notices": "If TMIN or TMAX is denoted in a GRID statement, STEP and TRATE of the CONVERGENCE statement are ignored.",
+      "examples": " CONV VE=1E-5 FE=1E-5 CA=2 TIME=1E-9 STEP=3 TRATE=5\nNE=1000 FC=800 ABORT=3 METHOD=P POISSON=E RANGEC=Y FPRINT=Y"
+    },
+    {
+      "name": "DEFINE",
+      "abbrev": "DEFINE",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement denotes the name and the value of a user defined parameter.\nThe parameter has both a numeric value and a character string.",
+      "format": "DEFINE NAME=<char> VALUE=<real>, <series>, or <func> [ VSTEP=<real> NSTEP=<real> FILE=<char> CHARACTER=<char> or <char array> OPTIMIZE=<char> or <func> TARGET=<real> ERROR=<real> ]",
+      "notices": "The maximum number of DEFINE statement which include VSTEP or NSTEP parameter is 30.\nDEFINE NAME=Value1 VALUE=1 VSTEP=1 NSTEP=2\nDEFINE NAME=Value2 VALUE=2 VSTEP=2 NSTEP=3\nDEFINE NAME=Value3 VALUE=3 VSTEP=3 NSTEP=4\nThe above DEFINE statements mean the following calculation loops.\nDO 3000 I1=0,2\n\tDO 2000 I2=0,3\n\t\tDO 1000 I3=0,4\nSPECTRA calculation\n1000   Value3=Value3+3\n2000  Value2=Value2+2\n3000 Value1=Value1+1",
+      "examples": " DEFINE NAME=Width VALUE=5.5 CHAR=Gate_width\nDEFINE NAME=Length VALUE=4.8 VSTEP=0.2 NSTEP=5\nDOPE xmin=0 xmax={@Width-0.5} ymin={@Length/4} ymax=@Length ・・・\nEXTRACT PARA=VE ENAME=GATE PARA=VMAX FILE=test-{@Width}-1.txt\n\t(file name is 'test-5.5-1.txt' in the above case)\nEXTRACT PARA=VE ENAME=GATE PARA=VMAX FILE=test-{$Width}-1.txt\n\t(file name is 'test-Gate_width-1.txt' in the above case)\nDEFINE NAME=Size VALUE=(0.3 0.5 0.8 1.2 2.0)\n\t(loop calculation is executed changing Size value as 0.3, 0.5, 0.8, 1.2, and 2.0 in the above case)\nDEFINE NAME=Size VALUE=(0.3 0.5 0.8 1.2 2.0)\nDEFINE NAME=Width VALUE=#Size(0.1 1.0 0.4 1.8 3.0)\n\tIn the above case, the combination of (Size, Width) changes as (0.3, 0.1), (0.5, 1.0), (0.8, 0.4), (1.2, 1.8), and (2.0, 3.0).\nDEFINE NAME=Size VALUE=(0.3 0.5 0.8 1.2)\nDEFINE NAME=File_name CHAR=#Size(abc.txt def.txt ghi.txt jkl.txt)\n\tIn the above case, the combination of (Size, File_name) changes as (0.3, abc.txt), (0.5, def.txt), (0.8, ghi.txt), and (1.2, jkl.txt)\nDEFINE NAME=Vsub VALUE=20 VSTEP=3 NSTEP=8 OPTIMIZE=#Pwell_Barrier\n\tTARGET=0.3 ERROR=0.001\nEXTRACT FILE=optimize-1.vm PARA=@Vsub\nPARA=BARRIER AXIS=Z XMIN=3.5 ZMIN=0.3 ZMAX=5 NAME=Pwell_Barrier\n\tIn the above case, Vsub is automatically adjusted to make the extracted parameter BARRIER named as Pwell_Barrier along Z-axis in the region of XMIN=3.5, ZMIN=0.3.\nDEFINE NAME=extfile CHARACTER={$INPUTFILE}.ext\n\tWhen the input file name is filename.in, $extfile is defined as filename.ext in the above case."
+    },
+    {
+      "name": "DEPOSIT",
+      "abbrev": "DEPO",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement deposit charge in the box region.",
+      "format": " DEPOSIT TYPE=<char> CHARGE=<char>\n\tXMIN=<real> YMIN=<real> ZMIN=<real>\n\tXMAX=<real> YMAX=<real> ZMAX=<real>",
+      "notices": "In the zero carrier model case, the charge distribution defined by this statement in the defined region is not changed.",
+      "examples": "DEPO TYPE=N CHARGE=1E15 XMIN=5.5 YMIN=6.0 ZMIN=0.1 XMAX=6.5 YMAX=8.5 ZMAX=0.3"
+    },
+    {
+      "name": "DOPE",
+      "abbrev": "DOPE",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement defines the impurity profile. The region to introduced the impurity profile is defined by the doping mask coordinate. The profile is defined by box, Gaussian, SUPREM2, SUPREM3, SUPREM4 or pairs of depth and concentration. The impurity profile lateral spreading is performed by the error function. The mask shape is defined by rectangles, right-angled triangles and polygons.",
+      "format": "DOPE [TYPE=<char> or ELEMENT=<char>] PROFILE=<char>\n\tXMIN=<real> YMIN=<real> XMAX=<real> YMAX=<real>\n\t[FILE=<char> ZMIN=<real> ZMAX=<real> CMAX=<real> CBACK=<real>\n\tXJ=<real> RP=<real> LD=<real> THETA=<real> PHI=<real>\n\tMULTIPLY=<real> PATTERN=<char> STEP=<real> or <char> GFILE=<char>\n\tXORIGIN=<real> YORIGIN =<real> AXIS=<char> NAME=<char> MASK=<func>\n\tANDMASK=<func> ANDNEGA=<func> CRATE =<real> DETECT=<char>\n\tAPPEND=<char> TRIM=<func> XPLUS= <real> YPLUS=<real> ZPLUS=<real>\n\tXMULTIPLE= <real> YMULTIPLE=<real> ZMULTIPLE=<real> XSHIFT= <real>\n\tYSHIFT=<real> ZSHIFT=<real> FXMULTIPLE= <real> FYMULTIPLE=<real>\n\tNEGATIVE=<char> XREPEAT= <real> or <char> YREPEAT= <real> or <char>\n\tLOCOS= <real> MATERIAL= <real> SKIP=<real> EXPAND=<real> & [] ]",
+      "notices": "1) TYPE, CMAX, CBACK, XJ, and RP are necessary in the case of PROFILE=GAUSSIAN\n2) TYPE, CMAX, ZMIN and ZMAX are necessary in the case of PROFILE=box\n3) ELEMENT and FILE are necessary in the case of PROFILE=SUPREM2 or SUPREM3\n4) FILE, XORIGIN, YORIGIN, AXIS,ZMIN and ZMAX are necessary in the case of PROFILE=SUPREM4, where the file format must be Medici structure file format\n5) TYPE (ELEMENT for only Germanium case) and FILE are necessary in the case of PROFILE=FREE\n6) PROFILE,XMIN,YMIN,XMAX and YMAX are necessary in every case\n7) In the case of PROFILE=FREE, if the neighboring two points with same depth exist, the depth is regarded as Si-SiO2 interface (Z=0). Unless the above points, the first depth is regarded as Si-SiO2 interface (Z=0).\n8) more than 1000th pair of depth and concentration is ignored in the case of PROFILE=FREE or SUPREM3\n9) at least one pair of depth and concentration less than CBACK is necessary in the case of PROFILE=FREE, SUPREM2 or SUPREM3\n10) SILVACO SSUPREM4 structure file can be input by denoting PROFILE=SSUPREM4\n11) ISE 2-D simulation data can be input by denoting PROFILE=ISE2. Then 'Net Active' and 'Total' doping concentration are necessary and the grid information file name must be denoted as GFILE parameter value.\n12) Synopsis 2-D process simulation data TIF file can be input by denoting PROFILE=TIF. Then 'Net' and 'Total' doping concentrations are necessary.\n13) Synopsis Sentaurus 2-D process simulation data file of DFISE format can be input by denoting PROFILE= DFISE2. Then 'BActive', 'PActive', and 'AsActive' doping concentrations must be included in the file and the grid information file name must be denoted as GFILE parameter value.\n14) If FILE() or MFILE() is denoted as the MASK parameter value, any overlapping region of polygons must not be included in every layer of the designated file, because the impurity is doubly doped in the overlapping region.\n15) In the case of ELEMENT=Ge, PROFILE must be BOX or FREE. Then, the Ge compound rate x of Si1-xGex must be denoted as CMAX for BOX profile or the concentration in FREE file.\n16) In the case of PROFILE=3D, the format of impurity file must be as follows. (one row consists of less than 1024 characters and at least one space is necessary between numbers)\n[Format number 0]\n1st row: 0 Nx Ny\n(0 is format number and Nx, Ny are total grid numbers along X and Y axis, respectively, which must not exceed 9900)\n2nd~Nx+1th row: X-coordinate (unit:μm, Nx)\nNx+2th~Nx+Ny+1th row: Y-coordinate (unit:μm, Ny)\nNx+Ny+2th row: X-coordinate Y-coordinate N1\n\t(N1 is mesh number along depth axis of 1st mesh point on XY plane)\nNx+Ny+3th~Nx+Ny+N1+2th row: Z-coordinate net-concentration(Cn-Cp) total-concentration (Cn+Cp)\n\t(Cn, Cp denotes donner and acceptor concentration, respectively)\n.\n.\n.\nMth row: X-coordinate Y-coordinate Nn\n\t(Nn is mesh number along depth axis of nth mesh point on XY plane)\nM+1th~M+Nnth row: Z-coordinate net-concentration(Cn-Cp) total-concentration (Cn+Cp)\nwhere\n\tn = Nx * Ny\n\tM = Nx + Ny + 1 + sum_1_to_n(Nk+1)\n[Format number 1]\n1st row: 1 Nx Ny Nz\n(1 is format number and Nx, Ny, and Nz are total grid numbers along X, Y, and Z axis, respectively, which must not exceed 9900)\n2nd~Nx+1th row: X-coordinate (unit:μm, Nx)\nNx+2th~Nx+Ny+1th row: Y-coordinate (unit:μm, Ny)\nNx+Ny+2th~Nx+Ny+Nz+1th row: Z-coordinate (unit:μm, Nz)\nNx+Ny+Nz+2th ~ Nx+Ny+Nz+Nx*Ny*Nz+1th row: net-concentration(CnetCn-Cp) total-concentration (CtotalCn+Cp)\n\t(Cn, Cp denotes donner and acceptor concentration, respectively)\n.\n.\n.\nThe order of Cnet and Ctotal is shown below by C language program.\n\tfor(k=0;k<Nz;k++){\n\t\tfor(j=0;j<Ny;j++){\n\t\t\tfor(i=0;i<Nx;i++){\n\t\t\t\tprintf(' %e %e ¥n',Cnet(X[i],Y[j],Z[k]),Ctotal(X[i],Y[j],Z[k]));\n\t\t\t}\n\t\t}\n\t}\n\nwhere X[i], Y[j], and Z[k] denote i-th X, j-th Y, and k-th Z coordinates, respectively.",
+      "examples": "DOPE ELEM=P PROF=SUPREM3 FILE=storage.sprm XMI=5 YMI=5 XMA=10 YMA=8\nDOPE TYPE=N PROF=GAUS XMI=2 YMI=3 XMA=5.5 YMA=9.8\n\tCM=1.2E17 CB=1.5E15 XJ=0.5 RP=0.1 LD=0.9 NAME=CS\nDOPE TYPE=N PROF=BOX XMI=0 YMI=0 XMA=5 YMA=7 ZMI=0 ZMA=8 CM=2E14 CB=2E15\nDOPE PROF=SUPREM4 FILE=cell.sp4 XMI=0 YMI=0 ZMI=0 XMA=8 YMA=9 ZMA=10\n\tXO=1 YO=0.2 AXIS=+Y APPEND=Y\nDOPE ELEM=B PROF=SUPREM3 FILE=pwell.sprm XMI=0 YMI=0 XMA=10 YMA=8\n\tMUL=1.5 CRATE=0.01 DETECT=S NAME=Pwell\nDOPE TYPE=N PROF=GAUSS CM=1.2E17 CB=2E15 XJ=0.8 RP=0.1\n\tMASK=POLY(1,1 5,1 7,3 7,8 4,8 4,5 1,5) NAME=PD\nDOPE ELEM=P PROF=SUPREM3 FILE=pd.spr MASK=FILE(maskfile.txt,pd-cell,7)\nDOPE ELEM=As PROF=SUPREM3 FILE=vccd.spr XPLUS=2 YPLUS=3\n\tMASK=FILE(maskfile.txt,vccd-cell,5,1)\nDOPE ELEM=Ge PROF=FREE FILE=SiGe-1.txt XMI=0 YMI=0 XMA=10 YMA=10\nDOPE ELEM=B PROF=SUPREM3 FILE=sd.spr XPLUS=2 YPLUS=3 ZPLUS=4\n\tMASK=MFILE(mask.txt,sd-layer)\nDOPE TYPE=N PROF=FREE FILE=pd.fre MASK=FILE(maskfile.txt,npd,9)\n\tTRIM=PERIODIC(0.2 0.3 5.1 7.2)\nDOPE PROF=ISE2 FILE=ise-2d.dat GFILE=ise-2d.grd XO=-1 YO=-2\n\tXMI=0 YMI=0 ZMI=0 XMA=8 YMA=9 ZMA=10\nDOPE PROF=3D FILE=prof3d.imp XMI=0 YMI=0 ZMI=0 XMA=8 YMA=9 ZMA=10\n\tAPPEND=Y XPLUS=2 YPLUS=3 ZPLUS=4\nDOPE ELEM=B PROF=SUPREM3 FILE=cs.spr\n\tMASK=FILE(maskfile.txt,vccd-cell,5,1) NEGA=Y STEP=AUTO\nDOPE TYPE=N PROF=FREE FILE=pd.txt XMIN=4 YMIN=4 XMAX=6 YMAX=6\n\tTHETA=10 PHI=30\nDOPE TYPE=P PROF=FREE FILE=cs.txt XMIN=2 XMAX=3 ZMIN=0.5 ZMAX=1\n\tYMAX=2.5 AXIS=-Y\nDOPE TYPE=N PROF=FREE FILE=sd.txt ZMAX=4.5 AXIS=-Z\n\tMASK=FILE(maskfile.txt,backside-cell,3,1)\nDOPE TYPE=P PROF=FREE FILE=p+.txt ZMIN=3.5 ZMAX=4.0 AXIS=X-Y+\n\tXMIN=2.5 YMIN=1.5 XMAX=3.5 YMAX=2.5\nDOPE TYPE=P PROF=FREE FILE=cs.txt ZMIN=3.5 ZMAX=4.0 AXIS=IN\n\tMASK=FILE(maskfile.txt,side-wall,4,1)\nDOPE TYPE=P PROF=FREE FILE=cs.txt\n\tMASK=FILE(maskfile.txt,pixel,1,1)\n\tMASK=FILE(maskfile.txt,pixel,2,1)\n\tANDMASK=FILE(maskfile.txt,pixel,3,1)\n\tANDNEGA=FILE(maskfile.txt,pixel,4,1)\nDOPE TYPE=P PROF=FREE FILE=cs.txt\n\tMASK=FILE(maskfile.txt,pixel,1,1) SKIP=2\nDOPE TYPE=P PROF=FREE FILE=dope-1.txt LOCOS=LOCOS-1\nDOPE TYPE=P PROF=FREE FILE=dope-3.txt MATERIAL=NITRIDE\n\tMASK=FILE(maskfile.txt,cell-3,5,1) ZMIN=0.1 ZMAX=4\nDOPE PROF=3D FILE=prof3d.imp XMI=0 YMI=0 ZMI=0 XMA=16 YMA=9 ZMA=10\n\tXSHIFT=8 YSHIFT=0 ZSHIFT=1 FXMUL=-1\nDOPE TYPE=P PROF=FREE FILE=ppd.txt\n\tMASK=FILE(maskfile.gds,pixel,6,1) EXPAND=-0.1\nDOPE TYPE=N PROF=FREE FILE=npd.txt\n\tMASK=FILE(maskfile.txt,pixel,5)\n\t&[MASK=FILE(maskfile.txt,pixel,6)\n\tANDMASK=FILE(maskfile.txt,pixel,7)\n\tANDNEGA=FILE(maskfile.txt,pixel,8)]"
+    },
+    {
+      "name": "ELECTRODE",
+      "abbrev": "ELEC",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement defines electrode voltage and its coordinate. The shape of the electrode is box or triangle pillar.",
+      "format": "ELECTRODE XMIN=<real> YMIN=<real> ZMIN=<real> XMAX=<real>\n\tYMAX=<real> ZMAX=<real> VOLTAGE=<real> [ PATTERN=<char>\n\tNAME=<char> MASK=<func> ANDMASK=<func> ANDNEGA=<func>\n\tXPLUS=<real> YPLUS=<real> XMULTIPLE=<real>\n\tYMULTIPLE=<real> WORK=<real> SUPREM4=<char>\n\tRESISTANCE=<real> LOCOS=<char> TRIM=<func> NEGATIVE=<char>\n\tEXPAND=<real> & []]",
+      "notices": "",
+      "examples": "ELECTRODE XMI=2.0 YMI=3 ZMI=0 XMA=5.5 YMA=7.8 ZMA=0.1 V=5 PAT=X+Y+\n\tNAME=Drain\nELECTRODE XMI=1 YMI=2 ZMI=-0.5 XMA=5.5 YMA=7.8 ZMA=-0.1 NAME=Gate1\n\tV=PWL( 0 0 2E-9 5 4E-9 5 6E-9 0 ) SUPREM4=Y\nELECTRODE XMI=8.0 YMI=3 ZMI=0 XMA=8 YMA=3 ZMA=0.1 V=0\n\tNAME=CS RESIST=1E8\nELECTRODE ZMIN=-0.2 ZMAX=-0.1 MASK=POLY(0,4 3,4 3,7 8,7 8,9 0,9) V=0\nELECTRODE ZMIN=-0.3 ZMAX=-0.1 MASK=FILE(maskfile.txt,gate,8) V=5\nELECTRODE ZMIN=-0.3 ZMAX=-0.1 XPLUS=3 YPLUS=4\n\tMASK=FILE(maskfile.txt,drain,6,2) V=3.3\nELECTRODE XMI=1 XMA=2 YMI=2 YMA=3 ZMI=-0.3 ZMA=-0.1 V=FILE(source.txt)\nELECTRODE XMI=8.0 YMI=3 ZMI=0 XMA=8 YMA=3 ZMA=0.1 LOCOS=Y V=0\nELECTRODE ZMIN=-0.3 ZMAX=-0.1 MASK=FILE(maskfile.txt,rg,9) V=0\n\tTRIM=PERIODIC(0.2 0.3 5.1 7.2)\nELECTRODE ZMIN=-0.4 ZMAX=-0.1 MASK=FILE(maskfile.txt,cs,7) V=0\n\tNEGA=Y\nELECTRODE ZMIN=-0.4 ZMAX=-0.1 V=3.3\n\tMASK=FILE(maskfile.gds,pixel,4)\n\tMASK=FILE(maskfile.gds,pixel,5)\n\tANDMASK=FILE(maskfile.gds,pixel,6)\n\tANDNEGA=FILE(maskfile.gdst,pixel,7)\nELECTRODE ZMIN=-0.2 ZMAX=-0.05 V=0\n\tMASK=FILE(maskfile.gds,gate,8) EXPAND=-0.1\nELECTRODE ZMIN=-0.3 ZMAX=-0.1 V=2\n\tMASK=FILE(maskfile.txt,pixel,4)\n\t&[MASK=FILE(maskfile.txt,pixel,5)\n\tANDMASK=FILE(maskfile.txt,pixel,6)\n\tANDNEGA=FILE(maskfile.txt,pixel,7)]"
+    },
+    {
+      "name": "END",
+      "abbrev": "END",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement specifies the end of input data. The statements after this statement are ignored.",
+      "format": "END",
+      "notices": "",
+      "examples": ""
+    },
+    {
+      "name": "EXTRACT",
+      "abbrev": "EXTR",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement specifies extracted parameter name and output file name. The parameters are extracted to the specified file in every bias step or every time step, if BIAS statement is used or time parameter is specified in convergence statement. At most 100 parameters can be extracted to one file.",
+      "format": "EXTRACT PARAMETER=<char> FILE=<char> [ ENAME=<char> XMIN=<real>\n\tYMIN=<real> ZMIN=<real> XMAX=<real> YMAX=<real>\n\tZMAX=<real> AXIS=<char> PATTERN=<char> OPTION=<char>\n\tMASK=<func> ANDMASK=<func> ANDNEGA=<func> NAME=<char>\n\tXPLUS=<real> YPLUS=<real> VALUE=<real> PEAK=<char>\n\tRADIUS=<real> TRIM=<func> STEP=<char> MATERIAL=<char>\n\tXMULTIPLE=<real> YMULTIPLE=<real> WIDTH=<real>\n\tCOORDINATE=<func> DELIMITER=<char> ]",
+      "notices": "(1) If 'ELECTRON','HOLE','VMIN','VMAX','NFERMI','PFERMI', 'GRCURRENT', 'NGRCURRENT', 'PGRCURRENT', 'BARRIER', 'EMIN', 'EMAX', 'CNMAX', 'CPMAX', 'XVMIN', 'YVMIN', 'ZVMIN', 'XVMAX', 'YVMAX', 'ZVMAX', 'XEMIN', 'YEMIN', 'ZEMIN', 'XEMAX', 'YEMAX', 'ZEMAX', 'XCNMAX', 'YCNMAX', 'ZCNMAX', 'XCPMAX', 'YCPMAX', 'ZCPMAX', 'NSADDLE', 'PSADDLE', 'XNSADDLE', 'YNSADDLE', 'ZNSADDLE', 'XPSADDLE', 'YPSADDLE', 'ZPSADDLE', 'NMAX', 'XNMAX', 'YNMAX', 'ZNMAX', 'NMIN', 'XNMIN', 'YNMIN', 'ZNMIN', 'PMAX', 'XPMAX', 'YPMAX', 'ZPMAX', 'PMIN', 'XPMIN', 'YPMIN', 'ZPMIN' or 'TTRANSIT' is specified, XMIN, YMIN, ZMIN, XMAX, YMAX, and ZMAX must be defined.\n(2)If NCURRENT, PCURRENT, VELECTRODE, or QELECTRODE is specified, ENAME must be defined.\n(3)If NSADDLE, PSADDLE, XNSADDLE, YNSADDLE, ZNSADDLE, XPSADDLE, YPSADDLE, ZPSADDLE, BARRIER or EMIN is specified, AXIS must be defined.\n(4) If MASK=FILE(...) or MASK=MFILE(...) is specified, the designate layer or data-type should consist of only one polygon or one rectangle data.\n(5) The extracted parameters can be used as the parameter values of Xmin, Xmax, Ymin, Ymax, Zmin, and Zmax by designating their NAME parameters following `#` in braces {}, where the parameter values must consist of not more than 80 characters in a single row.",
+      "examples": "EXTRACT PARA=VE ENAME=DRAIN FILE=mostr.cur\n\tPARA=NCUR ENAME=DRAIN\n\tPARA=ELEC XMIN=5 YMIN=2 ZMIN=0 XMAX=8 YMAX=6 ZMAX=1\n\tPARA=NSAD XMIN=5 YMIN=2 ZMIN=0 XMAX=8 YMAX=6 ZMAX=1 AXIS=X\n\tPARA=EMIN XMIN=3 YMIN=0 ZMIN=0 XMAX=6 YMAX=8 ZMAX=2 AXIS=-X\n\tPARA=@user_defined_parameter\n\tPARA=$$user_character_string\n\tPARA=ELEC MASK=FILE(mask.txt,PD1,2) ZMIN=0.2 ZMAX=2 NAME=pd1\nEXTRACT PARA=VE ENAME=DRAIN PARA=NC ENAME=DRAIN FILE=mostr-{%3.1f:@Vg}.nc\n\tPARA=EVOL XMIN=1 YMIN=2 ZMIN=0 XMAX=8 YMAX=6 ZMAX=3 VALUE=2E5\n\tPARA=NSADDLE AXIS=-X XMIN=1 XMAX=7 ZMAX=2 PEAK=Y\n\tPARA=PSADDLE AXIS=N XMIN=5 XMAX=8 ZMAX=0.3 ZMAX=3\n\tPARA=PBARRIER AXIS=X-Y-Z- XMIN=2 XMAX=6 YMIN=3 YMAX=5\n\t\tZMAX=0.1 ZMAX=1 RADIUS=0.3 STEP=40\n\tPARA=EMAX XMIN=5 YMIN=2 ZMIN=0 XMAX=8 YMAX=6 ZMAX=3 MATE=OX\n\tPARA=NGR XMIN=1.0 YMIN=1.5 ZMIN=0.2 XMAX=1.8 YMAX=2.2 ZMAX=1\nEXTRACT FILE={$INPUTFILE}.ext\n\tPARA=VMAX ZMAX=2\n\tMASK=FILE(ext-mask.txt,cis,1)\n\tMASK=FILE(ext-mask.txt,cis,2)\n\tANDMASK=FILE(ext-mask.txt,cis,3)\n\tANDNEGA=FILE(ext-mask.txt,cis,4)\nEXTRACT FILE={$INPUTFILE}.ele OPTION=PRECISE DELIMIT=TAB\n\tPARA=@VFD PARA=ELEC ZMAX=2\n\tPARA=VMAX XMIN=0.5 XMAX=1.0 ZMIN=0.1 ZMAX=0.8 NAME=XVMAX_1\n\tPARA=NSADDLE AXIS=-X XMIN=0 XMAX={#XVMAX_1+0.1}\n\tPARA=VALUE VALUE={#Electron-1 * 1E-3}"
+    },
+    {
+      "name": "GRID",
+      "abbrev": "GRID",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement specifies the grid number and the grid space width in the calculation region. The grid space width is given by geometric progression.",
+      "format": " GRID [ RATIO or RATE= <real> SPACE=<real> XMIN=<real> XMAX=<real>\n\tYMIN=<real> YMAX=<real> ZMIN=<real> ZMAX=<real> TMIN=<real>\n\tTMAX=<real> XPLUS=<real> YPLUS=<real> ZPLUS=<real>\n\tTPLUS=<real> ]",
+      "notices": "One of XMAX, YMAX and ZMAX must be specified in this statement.\nIf XGSUM, YGSUM, ZGSUM, and TGSUM are the summation of X, Y, Z, and time axis grid space number respectively, the following equations must be satisfied.\nXGSUM ≦ 9900, YGSUM ≦ 9900, ZGSUM ≦ 9900, TGSUM ≦ 9900\n(XGSUM+3)*(YGSUM+3)*(ZGSUM+2) < GMAX\n(GMAX depends on the system and the program version.)\nIf TMIN or TMAX is denoted in a GRID statement, STEP and TRATE of the CONVERGENCE statement are ignored.",
+      "examples": " GRID ZMIN=-0.1 ZMAX=0 STEP=10\nGRID RATIO=20 ZMAX=20 STEP=30"
+    },
+    {
+      "name": "IF",
+      "abbrev": "IF",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement controles the execution of the statements before ENDIF according to truth or falsehood of the equation in the square brackets just after 'IF'.",
+      "format": "IF[<func>] ... ELSE ... ENDIF",
+      "notices": "",
+      "examples": "IF [@Cmax <= 5E16]\n\tELECTRODE Xmin=0 Xmax=5 Ymin=0 Ymax=5 Zmin=-0.05 Zmax=-0.03 V=0\nELSE\n\tELECTRODE Xmin=0 Xmax=5 Ymin=0 Ymax=5 Zmin=-0.05 Zmax=-0.03 V=5\nENDIF"
+    },
+    {
+      "name": "INSERT",
+      "abbrev": "INSERT",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement inserts the designated file text at the statement.",
+      "format": "INSERT FILE=<char>",
+      "notices": "",
+      "examples": "INSERT FILE=MOS-1.txt"
+    },
+    {
+      "name": "INTERFACE",
+      "abbrev": "INT",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement specifies the box region coordinate where the interface exists, the charge concentration, and the carrier generation recombination velocity of the interface.",
+      "format": "INTERFACE [ MATERIAL=<char> MATERIAL=<char> QF=<real>\n\tSN=<real> SP=<real> XMIN=<real> YMIN=<real>\n\tZMIN=<real> XMAX=<real> YMAX=<real> ZMAX=<real>\n\tTRIM=<func> NEGATIVE=<char> CTRAP=<real> DTRAP=<real>\n\tTRAPMOB=<real> XPLUS=<real> YPLUS=<real> NAME=<char>\n\tMASK=<func> ANDMASK=<func> ANDNEGA=<func>\n\tXMULTIPLE=<real> YMULTIPLE=<real> EXPAND=<real> & [] ]",
+      "notices": "",
+      "examples": "INTERFACE MATE=NI MATE=SI XMI=2 YMI=3 ZMI=1 XMA=8 YMA=8 ZMA=2\n\tQF=5E10 SN=50 SP=50\nINTERFACE MATE=OXIDE MATE=SI MASK=FILE(maskfile.txt,gate,8,3)\n\tZMIN=-1 ZMAX=1 TRAPMOB=1E-6 CTRAP=1E12 DTRAP=1E-5\nINTERFACE MATE=OXIDE MATE=SI ZMIN=-1 ZMAX=1 QF=8E10\n\tMASK=FILE(maskfile.txt,cis,1,3)\n\tANDMASK=FILE(maskfile.txt,cis,2,3)\n\tANDNEGA=FILE(maskfile.txt,cis,2,4)\n\tMASK=FILE(maskfile.txt,cis,3,3)\nINTERFACE MATE=M1 MATE=M2 ZMIN=-1 ZMAX=-0.5 QF=2E11\n\tMASK=FILE(maskfile.gds,cell-1,1,5) EXPAND=0.2\nINTERFACE MATE=M1 MATE=M2 ZMIN=-1 ZMAX=-0.5 QF=-1E11\n\tMASK=FILE(maskfile.txt,pixel,4)\n\t&[MASK=FILE(maskfile.txt,pixel,5)\n\tANDMASK=FILE(maskfile.txt,pixel,6)\n\tANDNEGA=FILE(maskfile.txt,pixel,7)]"
+    },
+    {
+      "name": "LIGHT",
+      "abbrev": "LIGHT",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement specifies wave length, intensity, angle, illuminated region, etc. of incident light.",
+      "format": "LIGHT [ LAMBDA=<real> POWER=<real> or <func> THETA=<real>\n\tPHI=<real> XMIN=<real> YMIN=<real> XMAX=<real>\n\tYMAX=<real> ASI or ABSORPTION=<real> NSI=<char> or <real>\n\tNAME=<char> XREPEAT=<char> YREPEAT=<char> TYPE=<char>\n\tFILE=<char> SKIP=<real> NSTEP=<real> LMAX=<real>\n\tREVERSE=<char> MIRROR=<char> XPLUS=<real> YPLUS=<real>\n\tZPLUS=<real> BACK=<char> MASK=<func> ANDMASK=<func>\n\tANDNEGA=<func> TRIM=<func> XMULTIPLE=<real> YMULTIPLE=<real>\n\tEXPAND=<real> & [] ]",
+      "notices": "1) If FILE is specified, power and skip parameter can be defined, where the power value is multiplied to intensity.\n2) In the case of 3-D light intensity text file, the file format must be as follows, which is same as 3-D impurity file format in DOPE statement.(one row consists of less than 1024 characters and at least one space is necessary between numbers)\n[Format number 0]\n1st row: 0 Nx Ny\n\t(0 is format number and Nx, Ny are mesh number along X and Y axis, respectively)\n2nd~Nx+1th row: X-coordinate (unit:μm, Nx)\nNx+2th~Nx+Ny+1th row: Y-coordinate (unit:μm, Ny)\nNx+Ny+2th row: X-coordinate Y-coordinate N1\n\t (N1 is mesh number along depth axis of 1st mesh point on XY plane)\nNx+Ny+3th~Nx+Ny+N1+2th row: Z-coordinate intensity (unit: W/cm2)\n.\n.\n.\nMth row: X-coordinate Y-coordinate Nn\n\t(Nn is mesh number along depth axis of nth mesh point on XY plane)\nM+1th~M+Nnth row: Z-coordinate intensity (unit: W/cm2)\nwhere\n\tn = Nx * Ny\n\tM = Nx+Ny+1+ sum_i_to_n(Nk+1)\n\n[Format number 1]\n1st row: 1 Nx Ny Nz\n\t(1 is format number and Nx, Ny, and Nz are total grid numbers along X, Y, and Z axes, respectively)\n2nd~Nx+1th row: X-coordinate (unit:μm, Nx)\nNx+2th~Nx+Ny+1th row: Y-coordinate (unit:μm, Ny)\nNx+Ny+2th~Nx+Ny+Nz+1th row: Z-coordinate (unit:μm, Nz)\nNx+Ny+Nz+2th~\nNx+Ny+Nz+Nx*Ny*Nz+1th row: Ip (light intensity, unit: W/cm2)\n.\n.\n.\nThe order of Ip is shown below by C language program.\n\tfor(k=0;k<Nz;k++){\n\t\tfor(j=0;j<Ny;j++){\n\t\t\tfor(i=0;i<Nx;i++){\n\t\t\t\tprintf(“ %e ¥n”,Ip(X[i],Y[j],Z[k]));\n\t\t\t}\n\t\t}\n\t}\nwhere X[i], Y[j], and Z[k] denote i-th X, j-th Y, and k-th Z coordinates, respectively.",
+      "examples": "LIGHT LA=400 PO=1E-3 XMI=4 YMI=2 XMAX=8 YMAX=9 THETA=10 PHI=90\nLIGHT FILE=toccata-1.rtd TYPE=WAVE POWER=1E-3 SKIP=3\nLIGHT FILE=toccata-2.rtd TYPE=WAVE REVERSE=X POWER=1E-2 NSTEP=15\nLIGHT LA=500 POWER=PWL(0,0 1E-9,0 2E-9,1E-3 8E-9,3E-3)\n\tXMI=4 YMI=2 XMAX=8 YMAX=9 BACK=Y\nLIGHT FILE=toccata-4.rtd ASI=T NSI=T XMI=1 YMI=2 XMAX=8 YMAX=6 ZMAX=3\nLIGHT LAMBDA=550 POW=1E-3 MASK=FILE(maskfile.txt,cell-1,5,1)\nLIGHT LAMBDA=550 POW=1E-3 MASK=FILE(maskfile.txt,cell-1,5,1)\n\tMASK=FILE(maskfile.txt,cell-1,6,1)\n\tANDMASK=FILE(maskfile.txt,cell-1,7,1)\n\tANDNEGA=FILE(maskfile.txt,cell-1,8,1)\nLIGHT FILE=light_power.txt Zmax=10 Power=PWL(0,0 1E-9,0 1E-9,3E-3)\nLIGHT POW=1E-3 MASK=FILE(maskfile.gds,cell-1,9,1) EXPAND=0.2\nLIGHT LAMBDA=550 POW=1E-3\n\tMASK=FILE(maskfile.txt,pixel,4)\n\t&[MASK=FILE(maskfile.txt,pixel,5)\n\tANDMASK=FILE(maskfile.txt,pixel,6)\n\tANDNEGA=FILE(maskfile.txt,pixel,7)]"
+    },
+    {
+      "name": "MODEL",
+      "abbrev": "MODEL",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement specifies the calculation model.",
+      "format": "MODEL [ MOBILITY=<char> BGNARROW=<char> SRH=<char> AUGER=<char>\n\tIMPACT=<char> TRAP=<char> TUNNELING=<char> FNCURRENT=<char> ]",
+      "notices": "If MOBILITY=Y is specified, the distance between every mesh point and every interface is calculated. In MOBILITY=P case, the calculation time is shorter than MOBILITY=Y case, because only Si-SiO2 interface at Z=0 is assumed for the mobility calculation.",
+      "examples": "MODEL MOBILITY=Y BGN=Y SRH=Y AUGER=Y IMPACT=Y FNC=Y"
+    },
+    {
+      "name": "NFERMI",
+      "abbrev": "NFER",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement specifies the electron quasi-Fermi potential and the coordinate of box or triangle pillar region.",
+      "format": "NFERMI XMIN=<real> YMIN=<real> ZMIN=<real> XMAX=<real>\n\tYMAX=<real> ZMAX=<real> VOLTAGE=<real> [ PATTERN=<char>\n\tAXIS=<char> DV=<real> NAME=<char> MASK=<func> ANDMASK=<func>\n\tANDNEGA=<func> TRIM=<func> XPLUS=<real> YPLUS=<real>\n\tXMULTIPLE= <real> YMULTIPLE=<real> EXPAND=<real> & []]",
+      "notices": "NFERMI of the unspecified region is set to the maximum value of the NFERMI.",
+      "examples": "NFERMI XMIN=2.0 YMIN=3 ZMIN=0 XMAX=5.5 YMAX=7.8 ZMAX=0.1 V=10\n\tPAT=X+Y- NAME=drain\nNFERMI MASK=FILE(mask.txt,PDN,2) NAME=pdn V=3\nNFERMI NAME=pdn ZMIN=0 ZMAX=10 V=3.3\n\tMASK=FILE(mask.txt,cell-1,2)\n\tMASK=FILE(mask.txt,cell-1,3)\n\tANDMASK=FILE(mask.txt,cell-1,4)\n\tANDNEGA=FILE(mask.txt,cell-1,5)\nNFERMI NAME=PD XMIN=3 XMAX=7 YMIN=2 YMAX=8 ZMIN=0 ZMAX=10 V=3.3\n\tAXIS=Z DV=-10\nNFERMI ZMIN=0 ZMAX=2 V=3\n\tMASK=FILE(mask.gds,cell-1,9) EXPAND=0.2\nNFERMI NAME=pdn ZMIN=0 ZMAX=3 V=2\n\tMASK=FILE(mask.txt,cell-2,2)\n\t&[MASK=FILE(mask.txt,cell-2,3)\n\tANDMASK=FILE(mask.txt,cell-2,4)\n\tANDNEGA=FILE(mask.txt,cell-2,5)]"
+    },
+    {
+      "name": "PFERMI",
+      "abbrev": "PFER",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement specifies the hole quasi-Fermi potential and the coordinate of box or triangle pillar region.",
+      "format": "PFERMI XMIN=<real> YMIN=<real> ZMIN=<real> XMAX=<real>\n\tYMAX=<real> ZMAX=<real> VOLTAGE=<real> [ PATTERN=<char>\n\tAXIS=<char> DV=<real> NAME=<char> MASK=<func> ANDMASK=<func>\n\tANDNEGA=<func> TRIM=<func> XPLUS=<real> YPLUS=<real>\n\tXMULTIPLE= <real> YMULTIPLE=<real> EXPAND=<real> & [] ]",
+      "notices": "PFERMI of the unspecified region is set to the minimum value of the PFERMI.",
+      "examples": " PFERMI XMIN=2.0 YMIN=3 ZMIN=0 XMAX=5.5 YMAX=7.8 ZMAX=0.1 V=5\n\tPAT=X-Y- NAME=DRAIN\nPFERMI MASK=FILE(mask.txt,PDP,3) name=pd3 V=5\nPFERMI NAME=pdp ZMIN=0 ZMAX=10 V=3.3\n\tMASK=FILE(mask.txt,cell-1,5)\n\tMASK=FILE(mask.txt,cell-1,6)\n\tANDMASK=FILE(mask.txt,cell-1,7)\n\tANDNEGA=FILE(mask.txt,cell-1,5)\nPFERMI NAME=PD XMIN=3 XMAX=7 YMIN=2 YMAX=8 ZMIN=0 ZMAX=10 V=3.3\n\tAXIS=Z DV=10\nPFERMI ZMIN=0 ZMAX=2 V=-3\n\tMASK=FILE(mask.gds,cell-1,9) EXPAND=0.2\nPFERMI NAME=pdp ZMIN=0 ZMAX=3 V=0\n\tMASK=FILE(mask.txt,cell-3,2)\n\t&[MASK=FILE(mask.txt,cell-3,3)\n\tANDMASK=FILE(mask.txt,cell-3,4)\n\tANDNEGA=FILE(mask.txt,cell-3,5)]"
+    },
+    {
+      "name": "REGION",
+      "abbrev": "REGI",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement specifies the coordinate, the material, and carrier generation-recombination velocity of the box or triangle pillar region.",
+      "format": "REGION MATERIAL=<char> [ XMIN=<real> XMAX=<real> YMIN=<real>\n\tYMAX=<real> ZMIN=<real> or <series> ZMAX=<real> or <series>\n\tPATTERN=<char> XORIGIN=<real> YORIGIN=<real> AXIS=<char>\n\tFILE=<char> GR=<real> or <func> MASK=<func> ANDMASK=<func>\n\tANDNEGA=<func> XPLUS=<real> YPLUS=<real> BEAK=<real> or <series>\n\tZBEAK=<real> EDGE=<char> TN0=<real> TP0=<real>\n\tTRIM=<func> RN=<func> RP=<func> MULTIPLY=<real> or <func>\n\tXMULTIPLE=<real> YMULTIPLE=<real> ZMULTIPLE=<real>\n\tFXMULTIPLE=<real> FYMULTIPLE=<real> XSHIFT=<real>\n\tYSHIFT=<real> ZSHIFT=<real> CURRENT=<real> NCURRENT=<real>\n\tPCURRENT=<real> EMOB=<real> HMOB=<real> SHAPE=<char>\n\tNAME=<char> EXPAND=<real> & [ ] ]",
+      "notices": "1) SILVACO SSUPREM4 structure file can be input by denoting MATERIAL=SSUPREM4\n2) ISE 2-D simulation data can be input by denoting MATERIAL=ISE2. Then, the grid information file name must be denoted as FILE parameter.\n3) Synopsis 2-D structure file can be input by denoting MATERIAL=TIF.\n4) Synopsis Sentaurus 2-D process simulation data file of DFISE format can be input by denoting MATERIAL= DFISE2. Then, the grid information file name must be denoted as FILE parameter.\n5) In the case of MATERIAL=LOCOS or SHAPE=LOCOS, inner part of the designated region is active region and outer part is field region (see Appendix J).\n6) In tha case of MATERIAL=LOCOS or SHAPE=LOCOS in plural REGION statements for different materials with different depths, the depth ranges designated by Zmin and Zmax must not be overlapped.\n7) The data file format is shown below in the case of GR=FILE(file_namae), RN=FILE(file_name), or RP=FILE(file_name). It is same as 3-D impurity file format in DOPE statement. (one row consists of less than 1024 characters and at least one space is necessary between numbers)\n[Format number 0]\n1st row: 0 Nx Ny\n\t(0 is format number and Nx, Ny are mesh number along X and Y axis, respectively)\n2nd~Nx+1th row: X-coordinate (unit:μm, Nx)\nNx+2th~Nx+Ny+1th row: Y-coordinate(unit:μm, Ny)\nNx+Ny+2th row: X-coordinate Y-coordinate N1\n\t(N1 is mesh number along depth axis of 1st mesh point on XY plane)\nNx+Ny+3th~Nx+Ny+N1+2th row: Z-coordinate generation-recombination velocity (A/cm3) or SRH generation-recombination rate (s-1)\n.\n.\n.\nMth row: X-coordinate Y-coordinate Nn\n\t(Nn is mesh number along depth axis of nth mesh point on XY plane)\nM+1th~M+Nnth row: Z-coordinate generation-recombination velocity (A/cm3) or SRH generation-recombination rate (s-1)\nwhere\n\tn = Nx * Ny ,\n\tM = Nx+Ny+1+sum_i_n(Nk+1)\n[Format number 1]\n1st row: 1 Nx Ny Nz\n\t(1 is format number and Nx, Ny, and Nz are total grid numbers along X, Y, and Z axes, respectively)\n2nd~Nx+1th row: X-coordinate (unit:μm, Nx)\nNx+2th~Nx+Ny+1th row: Y-coordinate (unit:μm, Ny)\nNx+Ny+2th~Nx+Ny+Nz+1th row: Z-coordinate (unit:μm, Nz)\nNx+Ny+Nz+2th ~ Nx+Ny+Nz+Nx*Ny*Nz+1th row: GR (generation-recombination rate, unit: A/cm3)\n\tor SRH (generation-recombination rate of SRH model, unit: s-1)\n.\n.\n.\nThe order of GR is shown bellow by C language program.\n\tfor(k=0;k<Nz;k++){\n\t\tfor(j=0;j<Ny;j++){\n\t\t\tfor(i=0;i<Nx;i++){\n\t\t\t\tprintf(“ %e ¥n”,GR(X[i],Y[j],Z[k]));\n\t\t\t}\n\t\t}\n\t}\nwhere X[i], Y[j], and Z[k] denote i-th X, j-th Y, and k-th Z coordinates, respectively.",
+      "examples": "REGION MATERIAL=NI XMI=2 YMI=3 ZMI=1 XMA=8 YMA=8 ZMA=2\nREGION MATERIAL=SUPREM4 FILE='mostr.str' XMI=1 YMI=2 ZMI=0\n\tXMA=3 YMA=5 ZMA=5 AXIS=-X XO=0 YO=-0.1\nREGION MATERIAL=LOCOS BEAK=1.0 ZMIN=-0.6 ZMAX=0.7\n\tMASK=POLYGON(1,1 3,1 4,2 4,5 2,5 1,4) NAME=LOCOS-1\nREGION MATERIAL=OXIDE ZMI=0 ZMA=0.4 MASK=FILE(maskfile.txt,trench,9)\nREGION MATERIAL=LOCOS ZMI=-0.5 ZMA=0.4 BEAK=0.9\n\tMASK=FILE(maskfile.txt,locos,3,1) XPLUS=2 YPLUS=3\nREGION XMI=2 YMI=3 ZMI=1 XMA=8 YMA=8 ZMA=2 TN0=1E-5 TP0=1E-6\nREGION MATERIAL=OXIDE ZMI=0 ZMA=0.4 MASK=FILE(maskfile.txt,oxide,8)\n\tTRIM=RECT(0.1 0.2 7.1 9.2)\nREGION XMI=0 YMI=0 ZMI=0 XMA=6 YMA=7 ZMA=8 RN=FILE(srhfile-1.txt)\nREGION XMI=1 YMI=0 ZMI=0 XMA=8 YMA=8 ZMA=8 GR=FILE(grfile-1.txt)\n\tMULTI=1E-2 XPLUS=0.5 YPLUS=1.2 ZPLUS=0.2\nREGION XMI=1 YMI=2 ZMI=0 XMA=5 YMA=3 ZMA=2 EMOB=800\nREGION MATERIAL=LOCOS MASK=POLYGON(1,1 3,1 4,2 4,5 2,5 1,4)\n\tBEAK=(0.15 0.29 0.4 0.5) ZMIN=(-0.05 -0.08 -0.15 -0.2)\n\tZMAX=(0.05 0.12 0.15 0.2) EDGE=FIELD NAME=LOCOS-2\nREGION NC=1E-6 XMI=1.5 YMI=2.1 ZMI=0 XMA=1.8 YMA=2.7 ZMA=1.2\nREGION XMI=1 YMI=0 ZMI=0 XMA=8 YMA=8 ZMA=8 GR=FILE(grfile-1.txt)\n\tMULTI=1E-3 FXMUL=0.5 FYMUL=0.5 XSHIFT=2 YSHIFT=3 ZSHIFT=0.1\nREGION MATERIAL=LOCOS ZMI=-0.2 ZMA=0.2 BEAK=0\n\tMASK=FILE(maskfile.txt,cell-2,3,1)\n\tMASK=FILE(maskfile.txt,cell-2,4,1)\n\tANDMASK=FILE(maskfile.txt,cell-2,5,1)\n\tANDNEGA=FILE(maskfile.txt,cell-2,6,1)\nREGION MATERIAL=INSULATOR ZMIN=3.0 ZMA=4.0 ZBEAK=3.5 BEAK=0.5\n\tSHAPE=LOCOS MASK=FILE(maskfile.txt,cell-2,3,1)\nREGION GR=FILE(grfile-1.txt) XMI=3 YMI=0 ZMI=0 XMA=8 YMA=9 ZMA=3\n\tMULTI=PWL(0,0 1E-7,0 5E-7,1 8E-7,1 1E-6,0)\nREGION MATERIAL=M1 ZMI=0 ZMA=0.4 MASK=FILE(maskfile.gds,cell-1,9)\n\tEXPAND=0.2\nREGION MATERIAL=M1 ZMI=-0.3 ZMA=-0.1\n\tMASK=FILE(maskfile.txt,cell-3,3,1)\n\t&[MASK=FILE(maskfile.txt,cell-3,4,1)\n\tANDMASK=FILE(maskfile.txt,cell-3,5,1)\n\tANDNEGA=FILE(maskfile.txt,cell-3,6,1)]"
+    },
+    {
+      "name": "RESTART",
+      "abbrev": "REST",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement specifies the file name to load the calculation result and continue the calculation.",
+      "format": "RESTART FILE=<char> [ NEW_FERMI=<char> ADD_IMPURITY=<char> OLD_ELECTRODE=<char> ]",
+      "notices": "",
+      "examples": "RESTART FILE=MOS-Tr-1.save\nRESTART FILE=CCD-1.save NEW_FERMI=Y\nRESTART FILE=CIS-1.save ADD_IMP=Y\nRESTART FILE=MOS-1.save OLD_ELE=Y ELECTRODE NAME=TG V=3.3"
+    },
+    {
+      "name": "SAVE",
+      "abbrev": "SAVE",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement specifies the file name for saving the calculation result.",
+      "format": "SAVE FILE=<char> [ TYPE=<char> TSTEP=<progression> OPTION=<char> ]",
+      "notices": "1) In the case of “TYPE=DATA”, the file name can include equations with user parameters in {}. The number format of the equation in {} can be designated by using C language format definition before ': ' in {}. The default format is '%g'. By the last SAVE statement and DEFINE statement in the above example, 11 data output files, from “es-vsub-0.0.dat” to “es-vsub-5.0.dat”, are created.\n2) The above example with TSTEP=(0, 5, 10, 15, 20) creates the 5 output files whose file names are trans-1_t000.dat, trans-1_t005.dat, trans-1_t010.dat, trans-1_t015.dat, and trans-1_t020.dat.",
+      "examples": "SAVE FILE=MOS-Tr-1.save OPTION=FINAL\nSAVE FILE=ccd-1.txt TYPE=TEXT\nDEFINE NAME=Vsub VALUE=10 VSTEP=1 NSTEP=10\nSAVE FILE=es-vsub-{@Vsub-10}.dat TYPE=DATA\nSAVE FILE=es-vsub-{%3.1f:@Vsub-10}.dat TYPE=DATA\nSAVE FILE=trans-1.dat TYPE=DATA TSTEP=(0, 5, 10, 15, 20)"
+    },
+    {
+      "name": "STRUCTURE",
+      "abbrev": "STRUCT",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement specifies the calculation region and the boundary conditions.",
+      "format": "STRUCTURE XBOUNDARY=<char> YBOUNDARY=<char> XMAX=<real> YMAX=<real> ZMAX=<real> ZMIN=<real> [ CELL=<char> ]",
+      "notices": "Zmin must be negative value.",
+      "examples": "STRUCT XB=P YB=R XMAX=10 YMAX=10 ZMAX=20 ZMIN=-0.08 CELL=T"
+    },
+    {
+      "name": "SUBSTRATE",
+      "abbrev": "SUBS",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement specifies impurity concentration, impurity type, and electrode voltage of substrate.",
+      "format": "SUBSTRATE TYPE=<char> CONCENTRATION=<real> VOLTAGE= <real> or <func> or <char>",
+      "notices": "If VOLTAGE=FLOAT is specified, an oxide layer with thickness of210-9 m and one grid of z-axis are added to the bottom of the substrate.",
+      "examples": "SUBS TYPE=P C=1E15 V=10\nSUBS TYPE=N C=1E14 V=FLOAT\nSUBS TYPE=P C=2E15 V=PWL(0,0 1E-7,-2 5E-7,-2 1E-6,0)"
+    },
+    {
+      "name": "TITLE",
+      "abbrev": "TITLE",
+      "mandatory_params": [],
+      "optional_params": [],
+      "manual_entry": "This statement specifies the title of the input file.",
+      "format": "TITLE <char>",
+      "notices": "",
+      "examples": "TITLE MOS Tr W/L=5/2"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "ABORT",
+      "abbrev": "ABORT",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ABSORPTION",
+      "abbrev": "ABS",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ADD_IMPURITY",
+      "abbrev": "ADD_IMP",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "AGE",
+      "abbrev": "AGE",
+      "types": [
+        "<real>",
+        "<progression>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ALPHAN",
+      "abbrev": "ALPHAN",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ALPHAP",
+      "abbrev": "ALPHAP",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "AN",
+      "abbrev": "AN",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ANDMASK",
+      "abbrev": "ANDM",
+      "types": [
+        "<func>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ANDNEGA",
+      "abbrev": "ANDN",
+      "types": [
+        "<func>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "AP",
+      "abbrev": "AP",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "APPEND",
+      "abbrev": "APP",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ASG",
+      "abbrev": "ASG",
+      "types": [
+        "<real>",
+        "<progression>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ASI",
+      "abbrev": "ASI",
+      "types": [
+        "<real>",
+        "<progression>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "AUGER",
+      "abbrev": "AUG",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "AXIS",
+      "abbrev": "AXIS",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "BACK",
+      "abbrev": "BACK",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "BEAK",
+      "abbrev": "BEAK",
+      "types": [
+        "<real>",
+        "<series>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "BETAN",
+      "abbrev": "BETAN",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "BETAP",
+      "abbrev": "BETAP",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "BGNARROW",
+      "abbrev": "BGN",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "BMODEL",
+      "abbrev": "BMOD",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "BN",
+      "abbrev": "BN",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "BP",
+      "abbrev": "BP",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "CARRIER",
+      "abbrev": "CA",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "CBACK",
+      "abbrev": "CB",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "CBG",
+      "abbrev": "CBG",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "CELL",
+      "abbrev": "CELL",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "CHARACTER",
+      "abbrev": "CHAR",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "CHARGE",
+      "abbrev": "CHA",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "CMAX",
+      "abbrev": "CMA",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "CN",
+      "abbrev": "CN",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "CONCENTRATION",
+      "abbrev": "C",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "COORDINATE",
+      "abbrev": "COO",
+      "types": [
+        "<func>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "CP",
+      "abbrev": "CP",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "CRATE",
+      "abbrev": "CRAT",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "CREFN",
+      "abbrev": "CREFN",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "CREFP",
+      "abbrev": "CREFP",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "CSRH",
+      "abbrev": "CSR",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "CTRAP",
+      "abbrev": "CTRAP",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "CURRENT",
+      "abbrev": "CU",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "DELIMITER",
+      "abbrev": "DELI",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "DETECT",
+      "abbrev": "DETE",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "DRANGE",
+      "abbrev": "DRAN",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "DTRAP",
+      "abbrev": "DTRAP",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "DV",
+      "abbrev": "DV",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "EAL",
+      "abbrev": "EAL",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "EDGE",
+      "abbrev": "EDGE",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "EGGE",
+      "abbrev": "EGGE",
+      "types": [
+        "<progression>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "EIN",
+      "abbrev": "EIN",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ELEMENT",
+      "abbrev": "ELEM",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "EM1",
+      "abbrev": "EM1",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "EM2",
+      "abbrev": "EM2",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "EM3",
+      "abbrev": "EM3",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "EM4",
+      "abbrev": "EM4",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "EM5",
+      "abbrev": "EM5",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "EM6",
+      "abbrev": "EM6",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "EM7",
+      "abbrev": "EM7",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "EM8",
+      "abbrev": "EM8",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "EME",
+      "abbrev": "EME",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "EMMIN",
+      "abbrev": "EMM",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "EMOB",
+      "abbrev": "EMOB",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ENAME",
+      "abbrev": "ENAM",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ENI",
+      "abbrev": "ENI",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "EOX",
+      "abbrev": "EOX",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "EPS",
+      "abbrev": "EPS",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ERROR",
+      "abbrev": "ER",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ESI",
+      "abbrev": "ESI",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ESREF",
+      "abbrev": "ESREF",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ET",
+      "abbrev": "ET",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "EXPAND",
+      "abbrev": "EXP",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "FACTN",
+      "abbrev": "FACTN",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "FACTP",
+      "abbrev": "FACTP",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "FCYCLE",
+      "abbrev": "FC",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "FERROR",
+      "abbrev": "FE",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "FILE",
+      "abbrev": "FILE",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "FLOAT",
+      "abbrev": "FLOA",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "FNBN",
+      "abbrev": "FNBN",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "FNBP",
+      "abbrev": "FNBP",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "FNCURRENT",
+      "abbrev": "FNC",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "FNMN",
+      "abbrev": "FNMN",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "FNMP",
+      "abbrev": "FNMP",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "FPRINT",
+      "abbrev": "FPRI",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "FSOR",
+      "abbrev": "FS",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "FXMULTIPLE",
+      "abbrev": "FXMUL",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "FYMULTIPLE",
+      "abbrev": "FYMUL",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "GFILE",
+      "abbrev": "GFILE",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "GR",
+      "abbrev": "GR",
+      "types": [
+        "<real>",
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "HMMIN",
+      "abbrev": "HMM",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "HMOB",
+      "abbrev": "HMOB",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "HSREF",
+      "abbrev": "HSREF",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "IMPACT",
+      "abbrev": "IMP",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "LAMBDA",
+      "abbrev": "LA",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "LD",
+      "abbrev": "LD",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "LMAX",
+      "abbrev": "LMA",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "LOCOS",
+      "abbrev": "LOCOS",
+      "types": [
+        "<char>",
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "MASK",
+      "abbrev": "MASK",
+      "types": [
+        "<func>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "MATERIAL",
+      "abbrev": "MATE",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "METHOD",
+      "abbrev": "METH",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "MIRROR",
+      "abbrev": "MIR",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "MOBILITY",
+      "abbrev": "MOB",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "MULTIPLY",
+      "abbrev": "MU",
+      "types": [
+        "<real>",
+        "<func>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "NAME",
+      "abbrev": "NAME",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "NCURRENT",
+      "abbrev": "NC",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "NEGATIVE",
+      "abbrev": "NEGA",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "NEW_FERMI",
+      "abbrev": "NEW_FERMI",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "NEWTON",
+      "abbrev": "NE",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "NFNAME",
+      "abbrev": "NFNA",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "NI",
+      "abbrev": "NI",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "NSI",
+      "abbrev": "NSI",
+      "types": [
+        "<char>",
+        "<real>",
+        "<progression>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "NSTEP",
+      "abbrev": "NS",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "OLD_ELECTRODE",
+      "abbrev": "OLD_ELE",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "OPTIMIZE",
+      "abbrev": "OPTIMIZE",
+      "types": [
+        "<char>",
+        "<func>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "OPTION",
+      "abbrev": "OPT",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "PARAMETER",
+      "abbrev": "PARA",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "PATTERN",
+      "abbrev": "PAT",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "PCURRENT",
+      "abbrev": "PC",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "PCYCLE",
+      "abbrev": "PC",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "PEAK",
+      "abbrev": "PEAK",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "PFNAME",
+      "abbrev": "PFNA",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "PHASE1",
+      "abbrev": "PHASE1",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "PHASE2",
+      "abbrev": "PHASE2",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "PHASE3",
+      "abbrev": "PHASE3",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "PHI",
+      "abbrev": "PHI",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "POISSON",
+      "abbrev": "POIS",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "POWER",
+      "abbrev": "PO",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "PROFILE",
+      "abbrev": "PROF",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "PSOR",
+      "abbrev": "PS",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "QE",
+      "abbrev": "QE",
+      "types": [
+        "<real>",
+        "<progression>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "QF",
+      "abbrev": "QF",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "RADIUS",
+      "abbrev": "RAD",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "RANGECHECK",
+      "abbrev": "RANGEC",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "RATE",
+      "abbrev": "RA",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "RATIO",
+      "abbrev": "RA",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "RESISTANCE",
+      "abbrev": "RESI",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "REVERSE",
+      "abbrev": "REV",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "RN",
+      "abbrev": "RN",
+      "types": [
+        "<func>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "RP",
+      "abbrev": "RP",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "SHAPE",
+      "abbrev": "SHAPE",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "SKIP",
+      "abbrev": "SKIP",
+      "types": [
+        "<char>",
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "SN",
+      "abbrev": "SN",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "SP",
+      "abbrev": "SP",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "SPACE",
+      "abbrev": "SP",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "SREFN",
+      "abbrev": "SREFN",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "SREFP",
+      "abbrev": "SREFP",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "SRH",
+      "abbrev": "SRH",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "STEP",
+      "abbrev": "ST",
+      "types": [
+        "<real>",
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "SUPREM4",
+      "abbrev": "SU",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "TARGET",
+      "abbrev": "TARG",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "TEMPERATURE",
+      "abbrev": "TEMP",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "THETA",
+      "abbrev": "THE",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "TIME",
+      "abbrev": "TI",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "TMASS",
+      "abbrev": "TMASS",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "TMAX",
+      "abbrev": "TMA",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "TMIN",
+      "abbrev": "TMI",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "TN0",
+      "abbrev": "TN0",
+      "types": [
+        "<real>",
+        "<progression>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "TP0",
+      "abbrev": "TP0",
+      "types": [
+        "<real>",
+        "<progression>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "TPLUS",
+      "abbrev": "TPL",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "TRAP",
+      "abbrev": "TRAP",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "TRAPMOB",
+      "abbrev": "TRAPMOB",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "TRATE",
+      "abbrev": "TR",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "TRIM",
+      "abbrev": "TRIM",
+      "types": [
+        "<func>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "TSTEP",
+      "abbrev": "TSTEP",
+      "types": [
+        "<progression>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "TUNNELING",
+      "abbrev": "TUN",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "TYPE",
+      "abbrev": "TYPE",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "VALUE",
+      "abbrev": "VALUE",
+      "types": [
+        "<real>",
+        "<series>",
+        "<func>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "VBG",
+      "abbrev": "VBG",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "VCN",
+      "abbrev": "VCN",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "VCP",
+      "abbrev": "VCP",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "VERROR",
+      "abbrev": "VE",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "VOLTAGE",
+      "abbrev": "V",
+      "types": [
+        "<real>",
+        "<func>",
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "VSN",
+      "abbrev": "VSN",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "VSP",
+      "abbrev": "VSP",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "VSTEP",
+      "abbrev": "VS",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "WIDTH",
+      "abbrev": "WID",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "WORK",
+      "abbrev": "WOR",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "XBOUNDARY",
+      "abbrev": "XB",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "XJ",
+      "abbrev": "XJ",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "XMAX",
+      "abbrev": "XMA",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "XMIN",
+      "abbrev": "XMI",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "XMULTIPLE",
+      "abbrev": "XMUL",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "XORIGIN",
+      "abbrev": "XO",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "XPLUS",
+      "abbrev": "XPL",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "XREF",
+      "abbrev": "XREF",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "XREPEAT",
+      "abbrev": "XREP",
+      "types": [
+        "<char>",
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "XSHIFT",
+      "abbrev": "XSH",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "YBOUNDARY",
+      "abbrev": "YB",
+      "types": [
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "YMAX",
+      "abbrev": "YMA",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "YMIN",
+      "abbrev": "YMI",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "YMULTIPLE",
+      "abbrev": "YMUL",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "YORIGIN",
+      "abbrev": "YO",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "YPLUS",
+      "abbrev": "YPL",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "YREPEAT",
+      "abbrev": "YREP",
+      "types": [
+        "<real>",
+        "<char>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "YSHIFT",
+      "abbrev": "YSH",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ZBEAK",
+      "abbrev": "ZBE",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ZMAX",
+      "abbrev": "ZMA",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ZMIN",
+      "abbrev": "ZMI",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ZMULTIPLE",
+      "abbrev": "ZMUL",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ZPLUS",
+      "abbrev": "ZPL",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    },
+    {
+      "name": "ZSHIFT",
+      "abbrev": "ZSH",
+      "types": [
+        "<real>"
+      ],
+      "examples": ""
+    }
+  ]
+}
