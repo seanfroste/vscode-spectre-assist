@@ -260,1614 +260,1195 @@
     {
       "name": "ABORT",
       "abbrev": "ABORT",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "ABSORPTION",
       "abbrev": "ABS",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "ADD_IMPURITY",
       "abbrev": "ADD_IMP",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "AGE",
       "abbrev": "AGE",
-      "types": [
-        "<real>",
-        "<progression>"
-      ],
+      "types": ["<real>", "<progression>"],
       "examples": ""
     },
     {
       "name": "ALPHAN",
       "abbrev": "ALPHAN",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "ALPHAP",
       "abbrev": "ALPHAP",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "AN",
       "abbrev": "AN",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "ANDMASK",
       "abbrev": "ANDM",
-      "types": [
-        "<func>"
-      ],
+      "types": ["<func>"],
       "examples": ""
     },
     {
       "name": "ANDNEGA",
       "abbrev": "ANDN",
-      "types": [
-        "<func>"
-      ],
+      "types": ["<func>"],
       "examples": ""
     },
     {
       "name": "AP",
       "abbrev": "AP",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "APPEND",
       "abbrev": "APP",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "ASG",
       "abbrev": "ASG",
-      "types": [
-        "<real>",
-        "<progression>"
-      ],
+      "types": ["<real>", "<progression>"],
       "examples": ""
     },
     {
       "name": "ASI",
       "abbrev": "ASI",
-      "types": [
-        "<real>",
-        "<progression>"
-      ],
+      "types": ["<real>", "<progression>"],
       "examples": ""
     },
     {
       "name": "AUGER",
       "abbrev": "AUG",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "AXIS",
       "abbrev": "AXIS",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "BACK",
       "abbrev": "BACK",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "BEAK",
       "abbrev": "BEAK",
-      "types": [
-        "<real>",
-        "<series>"
-      ],
+      "types": ["<real>", "<series>"],
       "examples": ""
     },
     {
       "name": "BETAN",
       "abbrev": "BETAN",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "BETAP",
       "abbrev": "BETAP",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "BGNARROW",
       "abbrev": "BGN",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "BMODEL",
       "abbrev": "BMOD",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "BN",
       "abbrev": "BN",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "BP",
       "abbrev": "BP",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "CARRIER",
       "abbrev": "CA",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "CBACK",
       "abbrev": "CB",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "CBG",
       "abbrev": "CBG",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "CELL",
       "abbrev": "CELL",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "CHARACTER",
       "abbrev": "CHAR",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "CHARGE",
       "abbrev": "CHA",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "CMAX",
       "abbrev": "CMA",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "CN",
       "abbrev": "CN",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "CONCENTRATION",
       "abbrev": "C",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "COORDINATE",
       "abbrev": "COO",
-      "types": [
-        "<func>"
-      ],
+      "types": ["<func>"],
       "examples": ""
     },
     {
       "name": "CP",
       "abbrev": "CP",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "CRATE",
       "abbrev": "CRAT",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "CREFN",
       "abbrev": "CREFN",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "CREFP",
       "abbrev": "CREFP",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "CSRH",
       "abbrev": "CSR",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "CTRAP",
       "abbrev": "CTRAP",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "CURRENT",
       "abbrev": "CU",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "DELIMITER",
       "abbrev": "DELI",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "DETECT",
       "abbrev": "DETE",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "DRANGE",
       "abbrev": "DRAN",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "DTRAP",
       "abbrev": "DTRAP",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "DV",
       "abbrev": "DV",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "EAL",
       "abbrev": "EAL",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "EDGE",
       "abbrev": "EDGE",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "EGGE",
       "abbrev": "EGGE",
-      "types": [
-        "<progression>"
-      ],
+      "types": ["<progression>"],
       "examples": ""
     },
     {
       "name": "EIN",
       "abbrev": "EIN",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "ELEMENT",
       "abbrev": "ELEM",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "EM1",
       "abbrev": "EM1",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "EM2",
       "abbrev": "EM2",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "EM3",
       "abbrev": "EM3",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "EM4",
       "abbrev": "EM4",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "EM5",
       "abbrev": "EM5",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "EM6",
       "abbrev": "EM6",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "EM7",
       "abbrev": "EM7",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "EM8",
       "abbrev": "EM8",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "EME",
       "abbrev": "EME",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "EMMIN",
       "abbrev": "EMM",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "EMOB",
       "abbrev": "EMOB",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "ENAME",
       "abbrev": "ENAM",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "ENI",
       "abbrev": "ENI",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "EOX",
       "abbrev": "EOX",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "EPS",
       "abbrev": "EPS",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "ERROR",
       "abbrev": "ER",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "ESI",
       "abbrev": "ESI",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "ESREF",
       "abbrev": "ESREF",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "ET",
       "abbrev": "ET",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "EXPAND",
       "abbrev": "EXP",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "FACTN",
       "abbrev": "FACTN",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "FACTP",
       "abbrev": "FACTP",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "FCYCLE",
       "abbrev": "FC",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "FERROR",
       "abbrev": "FE",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "FILE",
       "abbrev": "FILE",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "FLOAT",
       "abbrev": "FLOA",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "FNBN",
       "abbrev": "FNBN",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "FNBP",
       "abbrev": "FNBP",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "FNCURRENT",
       "abbrev": "FNC",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "FNMN",
       "abbrev": "FNMN",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "FNMP",
       "abbrev": "FNMP",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "FPRINT",
       "abbrev": "FPRI",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "FSOR",
       "abbrev": "FS",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "FXMULTIPLE",
       "abbrev": "FXMUL",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "FYMULTIPLE",
       "abbrev": "FYMUL",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "GFILE",
       "abbrev": "GFILE",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "GR",
       "abbrev": "GR",
-      "types": [
-        "<real>",
-        "<char>"
-      ],
+      "types": ["<real>", "<char>"],
       "examples": ""
     },
     {
       "name": "HMMIN",
       "abbrev": "HMM",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "HMOB",
       "abbrev": "HMOB",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "HSREF",
       "abbrev": "HSREF",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "IMPACT",
       "abbrev": "IMP",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "LAMBDA",
       "abbrev": "LA",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "LD",
       "abbrev": "LD",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "LMAX",
       "abbrev": "LMA",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "LOCOS",
       "abbrev": "LOCOS",
-      "types": [
-        "<char>",
-        "<real>"
-      ],
+      "types": ["<char>", "<real>"],
       "examples": ""
     },
     {
       "name": "MASK",
       "abbrev": "MASK",
-      "types": [
-        "<func>"
-      ],
+      "types": ["<func>"],
       "examples": ""
     },
     {
       "name": "MATERIAL",
       "abbrev": "MATE",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "METHOD",
       "abbrev": "METH",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "MIRROR",
       "abbrev": "MIR",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "MOBILITY",
       "abbrev": "MOB",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "MULTIPLY",
       "abbrev": "MU",
-      "types": [
-        "<real>",
-        "<func>"
-      ],
+      "types": ["<real>", "<func>"],
       "examples": ""
     },
     {
       "name": "NAME",
       "abbrev": "NAME",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "NCURRENT",
       "abbrev": "NC",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "NEGATIVE",
       "abbrev": "NEGA",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "NEW_FERMI",
       "abbrev": "NEW_FERMI",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "NEWTON",
       "abbrev": "NE",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "NFNAME",
       "abbrev": "NFNA",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "NI",
       "abbrev": "NI",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "NSI",
       "abbrev": "NSI",
-      "types": [
-        "<char>",
-        "<real>",
-        "<progression>"
-      ],
+      "types": ["<char>", "<real>", "<progression>"],
       "examples": ""
     },
     {
       "name": "NSTEP",
       "abbrev": "NS",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "OLD_ELECTRODE",
       "abbrev": "OLD_ELE",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "OPTIMIZE",
       "abbrev": "OPTIMIZE",
-      "types": [
-        "<char>",
-        "<func>"
-      ],
+      "types": ["<char>", "<func>"],
       "examples": ""
     },
     {
       "name": "OPTION",
       "abbrev": "OPT",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "PARAMETER",
       "abbrev": "PARA",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "PATTERN",
       "abbrev": "PAT",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "PCURRENT",
       "abbrev": "PC",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "PCYCLE",
       "abbrev": "PC",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "PEAK",
       "abbrev": "PEAK",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "PFNAME",
       "abbrev": "PFNA",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "PHASE1",
       "abbrev": "PHASE1",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "PHASE2",
       "abbrev": "PHASE2",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "PHASE3",
       "abbrev": "PHASE3",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "PHI",
       "abbrev": "PHI",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "POISSON",
       "abbrev": "POIS",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "POWER",
       "abbrev": "PO",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "PROFILE",
       "abbrev": "PROF",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "PSOR",
       "abbrev": "PS",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "QE",
       "abbrev": "QE",
-      "types": [
-        "<real>",
-        "<progression>"
-      ],
+      "types": ["<real>", "<progression>"],
       "examples": ""
     },
     {
       "name": "QF",
       "abbrev": "QF",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "RADIUS",
       "abbrev": "RAD",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "RANGECHECK",
       "abbrev": "RANGEC",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "RATE",
       "abbrev": "RA",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "RATIO",
       "abbrev": "RA",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "RESISTANCE",
       "abbrev": "RESI",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "REVERSE",
       "abbrev": "REV",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "RN",
       "abbrev": "RN",
-      "types": [
-        "<func>"
-      ],
+      "types": ["<func>"],
       "examples": ""
     },
     {
       "name": "RP",
       "abbrev": "RP",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "SHAPE",
       "abbrev": "SHAPE",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "SKIP",
       "abbrev": "SKIP",
-      "types": [
-        "<char>",
-        "<real>"
-      ],
+      "types": ["<char>", "<real>"],
       "examples": ""
     },
     {
       "name": "SN",
       "abbrev": "SN",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "SP",
       "abbrev": "SP",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "SPACE",
       "abbrev": "SP",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "SREFN",
       "abbrev": "SREFN",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "SREFP",
       "abbrev": "SREFP",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "SRH",
       "abbrev": "SRH",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "STEP",
       "abbrev": "ST",
-      "types": [
-        "<real>",
-        "<char>"
-      ],
+      "types": ["<real>", "<char>"],
       "examples": ""
     },
     {
       "name": "SUPREM4",
       "abbrev": "SU",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "TARGET",
       "abbrev": "TARG",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "TEMPERATURE",
       "abbrev": "TEMP",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "THETA",
       "abbrev": "THE",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "TIME",
       "abbrev": "TI",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "TMASS",
       "abbrev": "TMASS",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "TMAX",
       "abbrev": "TMA",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "TMIN",
       "abbrev": "TMI",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "TN0",
       "abbrev": "TN0",
-      "types": [
-        "<real>",
-        "<progression>"
-      ],
+      "types": ["<real>", "<progression>"],
       "examples": ""
     },
     {
       "name": "TP0",
       "abbrev": "TP0",
-      "types": [
-        "<real>",
-        "<progression>"
-      ],
+      "types": ["<real>", "<progression>"],
       "examples": ""
     },
     {
       "name": "TPLUS",
       "abbrev": "TPL",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "TRAP",
       "abbrev": "TRAP",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "TRAPMOB",
       "abbrev": "TRAPMOB",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "TRATE",
       "abbrev": "TR",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "TRIM",
       "abbrev": "TRIM",
-      "types": [
-        "<func>"
-      ],
+      "types": ["<func>"],
       "examples": ""
     },
     {
       "name": "TSTEP",
       "abbrev": "TSTEP",
-      "types": [
-        "<progression>"
-      ],
+      "types": ["<progression>"],
       "examples": ""
     },
     {
       "name": "TUNNELING",
       "abbrev": "TUN",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "TYPE",
       "abbrev": "TYPE",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "VALUE",
       "abbrev": "VALUE",
-      "types": [
-        "<real>",
-        "<series>",
-        "<func>"
-      ],
+      "types": ["<real>", "<series>", "<func>"],
       "examples": ""
     },
     {
       "name": "VBG",
       "abbrev": "VBG",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "VCN",
       "abbrev": "VCN",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "VCP",
       "abbrev": "VCP",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "VERROR",
       "abbrev": "VE",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "VOLTAGE",
       "abbrev": "V",
-      "types": [
-        "<real>",
-        "<func>",
-        "<char>"
-      ],
+      "types": ["<real>", "<func>", "<char>"],
       "examples": ""
     },
     {
       "name": "VSN",
       "abbrev": "VSN",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "VSP",
       "abbrev": "VSP",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "VSTEP",
       "abbrev": "VS",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "WIDTH",
       "abbrev": "WID",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "WORK",
       "abbrev": "WOR",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "XBOUNDARY",
       "abbrev": "XB",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "XJ",
       "abbrev": "XJ",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "XMAX",
       "abbrev": "XMA",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "XMIN",
       "abbrev": "XMI",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "XMULTIPLE",
       "abbrev": "XMUL",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "XORIGIN",
       "abbrev": "XO",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "XPLUS",
       "abbrev": "XPL",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "XREF",
       "abbrev": "XREF",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "XREPEAT",
       "abbrev": "XREP",
-      "types": [
-        "<char>",
-        "<real>"
-      ],
+      "types": ["<char>", "<real>"],
       "examples": ""
     },
     {
       "name": "XSHIFT",
       "abbrev": "XSH",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "YBOUNDARY",
       "abbrev": "YB",
-      "types": [
-        "<char>"
-      ],
+      "types": ["<char>"],
       "examples": ""
     },
     {
       "name": "YMAX",
       "abbrev": "YMA",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "YMIN",
       "abbrev": "YMI",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "YMULTIPLE",
       "abbrev": "YMUL",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "YORIGIN",
       "abbrev": "YO",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "YPLUS",
       "abbrev": "YPL",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "YREPEAT",
       "abbrev": "YREP",
-      "types": [
-        "<real>",
-        "<char>"
-      ],
+      "types": ["<real>", "<char>"],
       "examples": ""
     },
     {
       "name": "YSHIFT",
       "abbrev": "YSH",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "ZBEAK",
       "abbrev": "ZBE",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "ZMAX",
       "abbrev": "ZMA",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "ZMIN",
       "abbrev": "ZMI",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "ZMULTIPLE",
       "abbrev": "ZMUL",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "ZPLUS",
       "abbrev": "ZPL",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     },
     {
       "name": "ZSHIFT",
       "abbrev": "ZSH",
-      "types": [
-        "<real>"
-      ],
+      "types": ["<real>"],
       "examples": ""
     }
   ]
