@@ -1,0 +1,6 @@
+{
+  "antlr4.generation": {
+    "language": "TypeScript"
+  },
+  "workbench.colorTheme": "Complete Dark"
+}
